@@ -122,9 +122,7 @@
     {
       id: 'TEA Cascade',
       regex: Regexes.startsUsing({ source: 'Living Liquid', id: '4826', capture: false }),
-      condition: function(data) {
-        return data.role == 'healer' || data.role == 'tank' || data.CanAddle();
-      },
+      condition: Conditions.caresAboutAOE,
       infoText: {
         en: 'aoe',
         de: 'AoE',
@@ -143,9 +141,7 @@
     {
       id: 'TEA Drainage Tether',
       regex: Regexes.tether({ source: 'Liquid Rage', id: '0003' }),
-      condition: function(data, matches) {
-        return data.me == matches.target;
-      },
+      condition: Conditions.targetIsYou,
       // Even if folks have the right tethers, this happens repeatedly.
       suppressSeconds: 5,
       alertText: {
